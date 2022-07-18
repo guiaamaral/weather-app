@@ -1,7 +1,8 @@
 
 export interface WeatherForecast {
-    date: string;
-    icon: string;
-    temp_max: number;
-    temp_min: number;
+    date?: string;
+    icon?: string;
+    status: number;
+    temp_max?: number;
+    temp_min?: number;
 }

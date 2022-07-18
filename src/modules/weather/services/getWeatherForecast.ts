@@ -18,22 +18,27 @@ export const getWeatherForecast = async (params: GetWeatherRequest): Promise<Wea
   
   let lastDay: number;
   const result: WeatherForecast[] = [];
-  resultJson.list.forEach(item => {
-    const today = new Date().setHours(23,59,59,59);
-    if (today > (item.dt * 1000)) return;
+  try {
+    resultJson.list.forEach(item => {
+      const today = new Date().setHours(23,59,59,59);
+      if (today > (item.dt * 1000)) return;
 
-    const weatherDate = new Date(item.dt * 1000);
-    const icon = `http://openweathermap.org/img/wn/${item.weather[0]?.icon}@2x.png`;
-    if (lastDay !== weatherDate.getDay()) {
-      result.push({
-        date: DAYS_OF_WEEK[weatherDate.getDay()],
-        icon: icon,
-        temp_max: Math.round(item.main.temp_max),
-        temp_min: Math.round(item.main.temp_min)
-      })
-    }
-    lastDay = weatherDate.getDay();
-  });
+      const weatherDate = new Date(item.dt * 1000);
+      const icon = `http://openweathermap.org/img/wn/${item.weather[0]?.icon}@2x.png`;
+      if (lastDay !== weatherDate.getDay()) {
+        result.push({
+          date: DAYS_OF_WEEK[weatherDate.getDay()],
+          icon: icon,
+          status: resultJson.cod,
+          temp_max: Math.round(item.main.temp_max),
+          temp_min: Math.round(item.main.temp_min)
+        })
+      }
+      lastDay = weatherDate.getDay();
+    });
+  } catch(err) {
+    result.push({status: resultJson.cod});
+  }
 
   return result;
 }

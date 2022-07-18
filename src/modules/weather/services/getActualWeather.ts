@@ -15,20 +15,26 @@ export const getActualWeather = async (params: GetWeatherRequest): Promise<Weath
   const fetchResult = await fetch(url);
   const resultJson: GetActualWeatherResult = await fetchResult.json();
 
-  const description = resultJson.weather[0]?.description.substring(0,1).toUpperCase() + resultJson.weather[0]?.description.substring(1).toLowerCase();
-  const icon = `http://openweathermap.org/img/wn/${resultJson.weather[0]?.icon}@2x.png`;
-  const result: WeatherData = {
-    description: description,
-    feels_like: Math.round(resultJson.main.feels_like),
-    humidity: resultJson.main.humidity,
-    icon: icon,
-    city: resultJson.name,
-    temp_max: Math.round(resultJson.main.temp_max),
-    temp_min: Math.round(resultJson.main.temp_min),
-    temp: Math.round(resultJson.main.temp),
-    sunrise: getHourAndMinute(resultJson.sys.sunrise),
-    sunset: getHourAndMinute(resultJson.sys.sunset),
-    wind: resultJson.wind.speed
+  let result: WeatherData;
+  try {
+    const description = resultJson.weather[0]?.description.substring(0,1).toUpperCase() + resultJson.weather[0]?.description.substring(1).toLowerCase();
+    const icon = `http://openweathermap.org/img/wn/${resultJson.weather[0]?.icon}@2x.png`;
+    result = {
+      description: description,
+      feels_like: Math.round(resultJson.main.feels_like),
+      humidity: resultJson.main.humidity,
+      icon: icon,
+      city: resultJson.name,
+      temp_max: Math.round(resultJson.main.temp_max),
+      temp_min: Math.round(resultJson.main.temp_min),
+      temp: Math.round(resultJson.main.temp),
+      status: resultJson.cod,
+      sunrise: getHourAndMinute(resultJson.sys.sunrise),
+      sunset: getHourAndMinute(resultJson.sys.sunset),
+      wind: resultJson.wind.speed
+    }
+  } catch(err) {
+    result = { status: resultJson.cod}
   }
 
   return result;
