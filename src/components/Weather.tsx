@@ -9,7 +9,7 @@ interface Props {
   location: string;
 }
 
-export default function Weather(props: Props) {
+export function Weather(props: Props) {
   const loc: GetWeatherRequest = {
     city: props.location
   }
@@ -36,3 +36,5 @@ export default function Weather(props: Props) {
     }
   }
 }
+
+export default Weather;

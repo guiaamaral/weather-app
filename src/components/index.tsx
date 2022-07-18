@@ -1,3 +1,3 @@
-export * from './ActualWeather';
-export * from './ForecastWeather';
 export * from './Header';
+export * from './Search';
+export * from './Weather';

@@ -1,8 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Header } from './components/Header';
-import { Search } from './components/Search';
-import Weather from './components/Weather';
+import { Header, Search, Weather } from './components';
 
 export default function App() {
   const [location, setLocation] = useState('São Paulo');
@@ -21,3 +19,4 @@ export default function App() {
     </div>
   );
 }
+
