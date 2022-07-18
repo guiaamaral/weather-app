@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+body {
+    background-color: #eee;
+    color: #2a2d2f;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app__header {
+    background-color: #2a2d2f;
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: white;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+    padding: 0 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app__content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.center {
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.rotate {
+    animation: rotation 2s infinite linear;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.app__content__search {
+    padding: 20px;
+    margin: 20px 20px 0 !important;
+}
+
+.app__content__search input {
+    border: none;
+    border-bottom: 2px solid #2a2d2f;
+    background: none;
+    color: #2a2d2f;
+    font-size: 16px;
+    height: 24px;
+    margin-right: 8px;
+    width: 85%;
+}
+
+.app__content__search .btn {
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 6px;
+}
+
+.app__content__search .btn:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.app__content__today {
+    margin-top: 0 !important;
+    border-radius: 6px;
+}
+
+.app__content__today div:last-of-type {
+    text-align: center;
+}
+
+.app__content__today__add {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.app__content__today__add strong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app__content__forecast {
+    padding: 20px;
+}
+
+.app__content__forecast table {
+    width: 100%;
+}
+
+.app__content__today img,
+.app__content__forecast table img {
+    -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.box {
+    align-items: center;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.error {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
 }
