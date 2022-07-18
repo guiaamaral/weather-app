@@ -15,8 +15,10 @@ export default function useFetchWeather(position: GetWeatherRequest) {
       setWeatherForecast(weatherForecastData);
       setIsLoading(false);
     };
-    isLoading && fetchData();
-  });
+    setIsLoading(true);
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [position.city]);
 
   return {
     isLoading,
