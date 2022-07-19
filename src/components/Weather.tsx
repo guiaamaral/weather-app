@@ -18,7 +18,7 @@ export function Weather(props: Props) {
   if (data.isLoading) {
     return (
       <div className="app__content center">
-        <ImSpinner8 size={42} className="rotate" />
+        <ImSpinner8 className="rotate" size={42} title="Carregando" />
       </div>
     );
   } else {

@@ -20,5 +20,5 @@ export interface GetActualWeatherResult {
         speed: number;
     };
     cod: number;
-    message: string;
+    message?: string;
 }

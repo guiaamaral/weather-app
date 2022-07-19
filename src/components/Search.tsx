@@ -30,7 +30,7 @@ export class Search extends Component<Props, {}> {
     return (
       <div className="app__content__search box">
         <input ref={this.inputRef} type="text" value={location} placeholder="Insira a sua cidade" onKeyDown={this._handleKeyDown} />
-        <ImSearch className="btn" size={18} onClick={this.handleChange} />
+        <ImSearch className="btn" size={18} title="Buscar" onClick={this.handleChange} />
       </div>
     );
   }
